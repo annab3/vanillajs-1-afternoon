@@ -1,6 +1,7 @@
 let arr = [];
 let xMoves = [];
 let oMoves =[];
+let turns = 0;
 let moves = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
 
 function reset() {
@@ -10,6 +11,7 @@ function reset() {
         xMoves = [];
         oMoves = [];
         arr = [];
+        turns = 0;
     }
 }
 
@@ -55,10 +57,13 @@ function play (location) {
         xMoves.push(location);
     }
 
+    if(turns >= 5){
     checkWinner(xMoves);
     checkWinner(oMoves);
+    };
 
     console.log(arr);
+    turns++;
 
     if (player.innerText === "O") {
         player.innerText = "X";
